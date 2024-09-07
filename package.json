@@ -7,11 +7,16 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "jest",
+    "watch": "jest --watch *.js"
   },
   "dependencies": {
     "astro": "^4.14.5",
     "eslint": "^9.9.1",
     "prettier": "^3.3.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   }
 }
