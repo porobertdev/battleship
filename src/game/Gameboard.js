@@ -27,6 +27,12 @@ class Gameboard {
 
         console.log(this.board[row]);
     }
+
+    receiveAttack(coords) {
+        const [row, col] = coords;
+
+        return this.board[row][col] === 1;
+    }
 }
 
 module.exports = Gameboard;

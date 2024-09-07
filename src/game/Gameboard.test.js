@@ -22,4 +22,11 @@ describe('Game board', () => {
 
         expect(leftSpace >= ship.length).toBe(true);
     });
+
+    test('can determine if a ship was hit', () => {
+        const ship = new Ship(3);
+        gameboard.placeShip(ship, [0, 5]);
+
+        expect(gameboard.receiveAttack([0, 5])).toBe(true);
+    });
 });
