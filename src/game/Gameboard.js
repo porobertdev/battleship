@@ -2,6 +2,7 @@ class Gameboard {
     constructor(size) {
         this.size = size;
         this.board = this.#createBoard(10);
+        this.missed = [];
     }
 
     #createBoard(size) {
@@ -31,7 +32,13 @@ class Gameboard {
     receiveAttack(coords) {
         const [row, col] = coords;
 
-        return this.board[row][col] === 1;
+        const isHit = this.board[row][col] === 1;
+
+        if (!isHit) {
+            this.missed.push(coords);
+        }
+
+        return isHit;
     }
 }
 

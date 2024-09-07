@@ -29,4 +29,11 @@ describe('Game board', () => {
 
         expect(gameboard.receiveAttack([0, 5])).toBe(true);
     });
+
+    test('can keep track of missed attacks', () => {
+        gameboard.receiveAttack([0, 3]);
+
+        expect(gameboard).toHaveProperty('missed');
+        expect(gameboard.missed.length).toBeGreaterThan(0);
+    });
 });
