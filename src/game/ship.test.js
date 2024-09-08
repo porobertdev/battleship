@@ -21,6 +21,17 @@ describe('Ship', () => {
         expect(ship.hits).toEqual(2);
     });
 
+    test('cant take more hits than its length', () => {
+        let result;
+
+        result = ship.hit();
+        result = ship.hit();
+        result = ship.hit();
+        result = ship.hit();
+
+        expect(result).toBe('Ship has already sunk');
+    });
+
     test('should be sunk when health is 0', () => {
         ship.hit();
         ship.hit();

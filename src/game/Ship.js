@@ -14,7 +14,12 @@ class Ship {
     };
 
     hit() {
-        this.hits += 1;
+        if (!this.isSunk()) {
+            this.hits += 1;
+            return 'Ship was hit';
+        } else {
+            return 'Ship has already sunk';
+        }
     }
 
     isSunk() {
