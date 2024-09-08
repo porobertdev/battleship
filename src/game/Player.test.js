@@ -10,4 +10,8 @@ describe('Player', () => {
     test('can be computer', () => {
         expect(new Player('computer').type).toBe('computer');
     });
+
+    test('can have max 5 ships', () => {
+        expect(player.gameboard.ships.length).toBeLessThanOrEqual(5);
+    })
 });

@@ -2,6 +2,7 @@ class Gameboard {
     constructor(size) {
         this.size = size;
         this.board = this.#createBoard(10);
+        this.ships = [];
         this.missed = [];
     }
 
@@ -25,6 +26,11 @@ class Gameboard {
         ) {
             this.board[row][i] = 1;
         }
+
+        this.ships.push({
+            length: ship.length,
+            coords,
+        });
 
         console.log(this.board);
     }

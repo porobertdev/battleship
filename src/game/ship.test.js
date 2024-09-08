@@ -1,7 +1,7 @@
 const Ship = require('./Ship');
 
 describe('Ship', () => {
-    const ship = new Ship(3);
+    const ship = new Ship('submarine');
 
     beforeEach(() => {
         ship.hits = 0;

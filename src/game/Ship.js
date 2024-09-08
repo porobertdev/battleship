@@ -1,8 +1,16 @@
 class Ship {
-    constructor(length) {
-        this.length = length;
+    constructor(name) {
+        this.length = this.#type[name];
         this.hits = 0;
     }
+
+    #type = {
+        carrier: 5,
+        battleship: 4,
+        cruiser: 3,
+        submarine: 3,
+        destroyer: 2,
+    };
 
     hit() {
         this.hits += 1;

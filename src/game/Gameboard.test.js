@@ -13,7 +13,7 @@ describe('Game board', () => {
     });
 
     test('there is enough space for the ship to be placed', () => {
-        const ship = new Ship(3);
+        const ship = new Ship('submarine');
         const coords = [0, 5];
         const [row, col] = coords;
 
@@ -24,7 +24,7 @@ describe('Game board', () => {
     });
 
     test('can determine if a ship was hit', () => {
-        const ship = new Ship(3);
+        const ship = new Ship('cruiser');
         gameboard.placeShip(ship, [0, 5]);
 
         expect(gameboard.receiveAttack([0, 5])).toBe(true);
