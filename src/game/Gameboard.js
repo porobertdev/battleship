@@ -27,10 +27,7 @@ class Gameboard {
             this.board[row][i] = 1;
         }
 
-        this.ships.push({
-            length: ship.length,
-            coords,
-        });
+        this.ships.push(ship);
     }
 
     receiveAttack(coords) {
@@ -40,6 +37,8 @@ class Gameboard {
 
         if (!isHit) {
             this.missed.push(coords);
+        } else {
+            this.board[row][col] = -1;
         }
 
         return isHit;
