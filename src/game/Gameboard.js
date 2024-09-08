@@ -31,8 +31,6 @@ class Gameboard {
             length: ship.length,
             coords,
         });
-
-        console.log(this.board);
     }
 
     receiveAttack(coords) {

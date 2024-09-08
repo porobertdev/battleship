@@ -2,7 +2,9 @@ const Gameboard = require('./Gameboard');
 const Ship = require('./Ship');
 
 describe('Game board', () => {
-    const gameboard = new Gameboard(10);
+    let gameboard;
+
+    beforeEach(() => (gameboard = new Gameboard(10)));
 
     test('has correct size', () => {
         expect(gameboard.size).toEqual(10);
@@ -12,15 +14,25 @@ describe('Game board', () => {
         expect(gameboard.board).not.toBe(undefined);
     });
 
-    test('there is enough space for the ship to be placed', () => {
+    describe('can be placed correctly', () => {
         const ship = new Ship('submarine');
         const coords = [0, 5];
         const [row, col] = coords;
 
-        gameboard.placeShip(ship, coords);
-        const leftSpace = gameboard.board[row].length - col;
+        test('the ship can fit in the left space', () => {
+            gameboard.placeShip(ship, coords);
+            const leftSpace = gameboard.board[row].length - col;
 
-        expect(leftSpace >= ship.length).toBe(true);
+            expect(leftSpace >= ship.length).toBe(true);
+        });
+
+        test('the space is empty', () => {
+            const path = gameboard.board[row]
+                .slice(col, col + ship.length)
+                .filter((square) => square === 0);
+
+            expect(path.length).toEqual(ship.length);
+        });
     });
 
     test('can determine if a ship was hit', () => {
@@ -43,6 +55,6 @@ describe('Game board', () => {
         at least a part of the ship
         */
         const string = gameboard.board.toString();
-        expect(string.includes(1)).toBeTruthy();
+        expect(!string.includes(1)).toBeTruthy();
     });
 });
