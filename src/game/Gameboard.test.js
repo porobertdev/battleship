@@ -36,4 +36,13 @@ describe('Game board', () => {
         expect(gameboard).toHaveProperty('missed');
         expect(gameboard.missed.length).toBeGreaterThan(0);
     });
+
+    test('report whether or not all the ships have been sunk', () => {
+        /*
+        if board includes 1, then it means there is still
+        at least a part of the ship
+        */
+        const string = gameboard.board.toString();
+        expect(string.includes(1)).toBeTruthy();
+    });
 });

@@ -13,20 +13,15 @@ class Gameboard {
     placeShip(ship, coords) {
         const [row, col] = coords;
 
-        /* this.board[row]
-            .slice(col, col + ship.length)
-            .forEach((square) => (square = 1)); */
-
         for (
             let i = col;
             i < col + ship.length && i < this.board[row].length;
             i++
         ) {
             this.board[row][i] = 1;
-            // console.log(this.board[row][i]);
         }
 
-        console.log(this.board[row]);
+        console.log(this.board);
     }
 
     receiveAttack(coords) {
