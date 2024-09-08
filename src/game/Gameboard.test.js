@@ -49,6 +49,12 @@ describe('Game board', () => {
         expect(gameboard.missed.length).toBeGreaterThan(0);
     });
 
+    test('doesnt allow invalid coords', () => {
+        const coords = [3, 12];
+
+        expect(gameboard.isCoordsInvalid(coords)).toBeTruthy();
+    });
+
     test('report whether or not all the ships have been sunk', () => {
         /*
         if board includes 1, then it means there is still

@@ -16,32 +16,44 @@ class Gameboard {
         return arr;
     }
 
-    placeShip(ship, coords) {
+    isCoordsInvalid(coords) {
         const [row, col] = coords;
 
-        for (
-            let i = col;
-            i < col + ship.length && i < this.board[row].length;
-            i++
-        ) {
-            this.board[row][i] = 1;
-        }
+        return (
+            this.board[row] === undefined || this.board[row][col] === undefined
+        );
+    }
 
-        this.ships.push(ship);
+    placeShip(ship, coords) {
+        if (!this.isCoordsInvalid(coords)) {
+            const [row, col] = coords;
+
+            for (
+                let i = col;
+                i < col + ship.length && i < this.board[row].length;
+                i++
+            ) {
+                this.board[row][i] = 1;
+            }
+
+            this.ships.push(ship);
+        }
     }
 
     receiveAttack(coords) {
-        const [row, col] = coords;
+        if (!this.isCoordsInvalid(coords)) {
+            const [row, col] = coords;
 
-        const isHit = this.board[row][col] === 1;
+            const isHit = this.board[row][col] === 1;
 
-        if (!isHit) {
-            this.missed.push(coords);
-        } else {
-            this.board[row][col] = -1;
+            if (!isHit) {
+                this.missed.push(coords);
+            } else {
+                this.board[row][col] = -1;
+            }
+
+            return isHit;
         }
-
-        return isHit;
     }
 }
 
