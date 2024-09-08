@@ -7,7 +7,12 @@ class Gameboard {
 
     #createBoard(size) {
         // 10 rows x 10 columns;
-        return new Array(size).fill(new Array(size).fill(0));
+        const arr = [];
+
+        for (let i = 0; i < size; i++) {
+            arr[i] = new Array(10).fill(0);
+        }
+        return arr;
     }
 
     placeShip(ship, coords) {
