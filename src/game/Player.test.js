@@ -1,4 +1,4 @@
-const Player = require('./Player');
+import Player from './Player';
 
 describe('Player', () => {
     const player = new Player();
@@ -13,5 +13,5 @@ describe('Player', () => {
 
     test('can have max 5 ships', () => {
         expect(player.gameboard.ships.length).toBeLessThanOrEqual(5);
-    })
+    });
 });
