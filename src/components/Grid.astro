@@ -1,0 +1,45 @@
+---
+const size = 10;
+
+const rows = new Array(size).fill('');
+const squares = new Array(size).fill('');
+---
+
+<div class="grid">
+    <!-- row starts from 0 to sync with index -->
+    {rows.map((row, index) => <div class=`row-${index}` >
+        {squares.map((el, index) => <div class=`square-${index}` ></div>)}
+    </div>)}
+</div>
+
+<style>
+    .grid {
+        /* display: grid;
+        grid-template-columns: repeat(10, 1fr); */
+    }
+
+    div[class^='row'] {
+        display: flex;
+    }
+
+    div[class^='square'] {
+        width: 40px;
+        height: 40px;
+        background-color: rgb(136, 58, 234);
+        border: 1px solid black;
+        cursor: pointer;
+
+        &.hover,
+        &.ship {
+            background-color: rgb(49, 10, 101);
+        }
+
+        &.hover.ship {
+            background-color: red;
+        }
+
+        &.destroyed {
+            background-color: red;
+        }
+    }
+</style>
