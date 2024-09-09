@@ -114,7 +114,7 @@ const SHIP_TYPES = {
     const player1 = new Player('computer');
     const player2 = new Player('real');
 
-    const squares = document.querySelectorAll('.grid div[class^="square"');
+    const squares = document.querySelectorAll('.player2 .grid div[class^="square"');
     squares.forEach((s) => s.addEventListener('mouseover', hoverHandler));
     squares.forEach((s) => s.addEventListener('click', placeShipHandler));
 
