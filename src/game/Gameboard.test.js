@@ -33,6 +33,11 @@ describe('Game board', () => {
 
             expect(path.length).toEqual(ship.length);
         });
+
+        test('ship has coordinates', () => {
+            gameboard.placeShip(ship, coords);
+            expect(ship).toHaveProperty('coords');
+        });
     });
 
     test('can determine if a ship was hit', () => {

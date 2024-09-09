@@ -36,6 +36,7 @@ class Gameboard {
                 this.board[row][i] = 1;
             }
 
+            ship.coords = coords;
             this.ships.push(ship);
         }
     }
