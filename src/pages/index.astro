@@ -125,7 +125,7 @@ const SHIP_TYPES = {
         console.log(target.classList.toString().includes('ship'));
         console.log(player2.gameboard.ships.length);
         if (target.classList.toString().includes('ship')) {
-            target.classList.add('red')
+            target.classList.add('red');
         }
 
         const ship = document.querySelector('input[name="controls"]:checked');
@@ -144,7 +144,7 @@ const SHIP_TYPES = {
             target.siblings = siblings;
             target.ship = {
                 rootEl: ship,
-                name: shipName,
+                name: shipName.trim(),
                 label: shipLabel,
                 length: shipLength,
                 direction: direction,
@@ -165,7 +165,9 @@ const SHIP_TYPES = {
             const col = getCoordinate(target);
 
             player2.gameboard.placeShip(new Ship(target.ship.name), [row, col]);
-            target.siblings.forEach((el) => el.classList.add('ship'));
+            target.siblings.forEach((el) =>
+                el.classList.add('ship', target.ship.name)
+            );
 
             console.log(player2.gameboard.ships);
         } else {

@@ -13,6 +13,13 @@ const squares = new Array(size).fill('');
 </div>
 
 <style>
+    :root {
+        --carrier: yellow;
+        --battleship: green;
+        --submarine: blue;
+        --destroyer: white;
+    }
+    
     .grid {
         /* display: grid;
         grid-template-columns: repeat(10, 1fr); */
@@ -34,12 +41,29 @@ const squares = new Array(size).fill('');
             background-color: rgb(49, 10, 101);
         }
 
-        &.hover.ship {
+        &.hover.ship,
+        &.destroyed{
             background-color: red;
         }
 
-        &.destroyed {
-            background-color: red;
+        &.carrier {
+            background-color: var(--carrier);
+        }
+
+        &.battleship {
+            background-color: var(--battleship);
+        }
+
+        &.cruiser {
+            background-color: var(--cruiser);
+        }
+
+        &.submarine {
+            background-color: var(--submarine);
+        }
+
+        &.destroyer {
+            background-color: var(--destroyer);
         }
     }
 </style>
