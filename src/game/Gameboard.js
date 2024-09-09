@@ -25,7 +25,7 @@ class Gameboard {
     }
 
     placeShip(ship, coords) {
-        if (!this.isCoordsInvalid(coords)) {
+        if (!this.isCoordsInvalid(coords) && this.ships.length <= 5) {
             const [row, col] = coords;
 
             for (
