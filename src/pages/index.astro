@@ -104,19 +104,18 @@ const SHIP_TYPES = {
 
 <script>
     import Player from '../game/Player';
-    import Ship from '../game/Ship';
-    import {
-        removeHoverEffect,
-        findNextSiblings,
-        getCoordinate,
-    } from '../ui/utils';
+    import { displayShip } from '../ui/display';
+    import { removeHoverEffect, findNextSiblings } from '../ui/utils';
 
     const player1 = new Player('computer');
     const player2 = new Player('real');
 
-    const squares = document.querySelectorAll('.player2 .grid div[class^="square"');
+    const squares = document.querySelectorAll(
+        '.player2 .grid div[class^="square"]'
+    );
     squares.forEach((s) => s.addEventListener('mouseover', hoverHandler));
-    squares.forEach((s) => s.addEventListener('click', placeShipHandler));
+
+    displayShip(player2);
 
     function hoverHandler(event) {
         const target = event.target;
@@ -150,28 +149,7 @@ const SHIP_TYPES = {
                 direction: direction,
             };
 
-            target.addEventListener('click', placeShipHandler);
-        }
-    }
-
-    function placeShipHandler(event) {
-        const target = event.target;
-
-        if (
-            player2.gameboard.ships.length < 5 &&
-            !target.classList.toString().includes('ship')
-        ) {
-            const row = getCoordinate(target.parentElement);
-            const col = getCoordinate(target);
-
-            player2.gameboard.placeShip(new Ship(target.ship.name), [row, col]);
-            target.siblings.forEach((el) =>
-                el.classList.add('ship', target.ship.name)
-            );
-
-            console.log(player2.gameboard.ships);
-        } else {
-            alert('no more ships left');
+            // target.addEventListener('click', placeShipHandler);
         }
     }
 </script>
