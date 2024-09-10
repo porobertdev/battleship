@@ -1,17 +1,18 @@
+import config from './config';
 class Gameboard {
-    constructor(size) {
-        this.size = size;
-        this.board = this.#createBoard(10);
+    constructor() {
+        this.size = config.boardSize;
+        this.board = this.#createBoard();
         this.ships = [];
         this.missed = [];
     }
 
-    #createBoard(size) {
+    #createBoard() {
         // 10 rows x 10 columns;
         const arr = [];
 
-        for (let i = 0; i < size; i++) {
-            arr[i] = new Array(10).fill(0);
+        for (let i = 0; i < this.size; i++) {
+            arr[i] = new Array(this.size).fill(0);
         }
         return arr;
     }

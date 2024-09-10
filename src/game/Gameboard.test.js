@@ -1,10 +1,11 @@
 import Gameboard from './Gameboard';
 import Ship from './Ship';
+import config from './config';
 
 describe('Game board', () => {
     let gameboard;
 
-    beforeEach(() => (gameboard = new Gameboard(10)));
+    beforeEach(() => (gameboard = new Gameboard(config.boardSize)));
 
     test('has correct size', () => {
         expect(gameboard.size).toEqual(10);
