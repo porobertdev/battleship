@@ -6,7 +6,10 @@ function displayShip(player) {
     const squares = document.querySelectorAll(
         `.${boardSelector} .grid div[class^="square"]`
     );
-    squares.forEach((s) => s.addEventListener('click', placeShipHandler));
+
+    if (boardSelector === 'player2') {
+        squares.forEach((s) => s.addEventListener('click', placeShipHandler));
+    }
 
     function placeShipHandler(event) {
         const target = event.target;
